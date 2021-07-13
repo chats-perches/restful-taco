@@ -1,5 +1,5 @@
 # Taco App
-####(*because every taco needs a REST*)
+#### *because every taco needs a REST*
 
 ## What does our taco app do?
 - registers/creates users
