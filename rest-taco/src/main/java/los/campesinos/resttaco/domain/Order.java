@@ -43,6 +43,7 @@ public class Order {
 
     // note: ingredient -> taco & taco -> order
 
+    public Order(){}
 
     public Order(String name, String street, String city, String state, String zip,
                  String ccNumber, String ccExpiration, String ccCVV) {

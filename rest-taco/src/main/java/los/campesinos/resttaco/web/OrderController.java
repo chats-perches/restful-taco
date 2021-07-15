@@ -6,6 +6,7 @@ import los.campesinos.resttaco.data.TacoRepository;
 import los.campesinos.resttaco.data.UserRepository;
 import los.campesinos.resttaco.domain.Order;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -28,24 +29,32 @@ public class OrderController {
         this.orderRepo = orderRepo;
         this.userRepo = userRepository;
     }
-    @GetMapping
-    List<Order> all(){
-        List<Order> all = new ArrayList<>();
-        orderRepo.findAll().forEach((x) -> all.add(x));
-        return all;
+    @GetMapping(produces="application/json")
+    Iterable<Order> all(){
+        return orderRepo.findAll();
     }
 
     @GetMapping("/{id}")
     Order one(@PathVariable Long id){
         return orderRepo.findById(id)
-                .orElseThrow(() -> null);
+                .orElse(new Order());
     }
 
-    @PostMapping
+    @PostMapping(consumes="application/json")
     @ResponseStatus(HttpStatus.CREATED)
     public Order newOrder(@RequestBody Order newOrder){
-        return newOrder;
+
+        return orderRepo.save(newOrder);
     }
+
+    @DeleteMapping("/{orderId}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void deleteOrder(@PathVariable("orderId") Long orderId) {
+        try {
+            orderRepo.deleteById(orderId);
+        } catch (EmptyResultDataAccessException e) {}
+    }
+
 
 
 }
