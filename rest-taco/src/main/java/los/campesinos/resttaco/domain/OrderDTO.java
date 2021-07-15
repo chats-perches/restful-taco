@@ -1,9 +1,12 @@
 package los.campesinos.resttaco.domain;
 
 import lombok.Data;
+import los.campesinos.resttaco.data.TacoRepository;
 import los.campesinos.resttaco.data.UserRepository;
 
 import javax.persistence.ManyToOne;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Data
@@ -30,13 +33,15 @@ public class OrderDTO {
 
     private Long userId;
 
+    private List<Long> tacoIds = new ArrayList<>();
+
     public User getUserFromDB(UserRepository repo){
         Optional<User> user = repo.findById(userId);
         return user.isPresent() ?
                 user.get() : null;
     }
 
-    public void updateOrder(Order order){
+    public void updateOrder(Order order, TacoRepository tacoRepo){
         if(orderName != null)
             order.setOrderName(orderName);
         if(street != null)
@@ -51,5 +56,10 @@ public class OrderDTO {
             order.setCcExpiration(ccExpiration);
         if(ccCVV != null)
             order.setCcCVV(ccCVV);
+        if(tacoIds != null) {
+            List<Taco> tacos = new ArrayList<>();
+            tacoIds.forEach(x -> tacos.add(tacoRepo.findById(x).orElse(null)));
+            order.setTacos(tacos);
+        }
     }
 }

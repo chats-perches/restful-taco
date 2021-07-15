@@ -47,7 +47,15 @@ create table if not exists Taco_Order (
     user_id bigint not null
 );
 
+create table if not exists Taco_Order_Tacos (
+	order_id bigint not null,
+	tacos_id bigint not null
+);
 
 alter table Taco_Order
     add foreign key (user_id) references User(id);
 
+alter table Taco_Order_Tacos
+    add foreign key (order_id) references Taco_Order(id);
+alter table Taco_Order_Tacos
+    add foreign key (tacos_id) references Taco(id);

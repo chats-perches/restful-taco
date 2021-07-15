@@ -41,12 +41,13 @@ public class Order {
     @ManyToOne
     private User user;
 
-    // note: ingredient -> taco & taco -> order
+    @ManyToMany(targetEntity = Taco.class)
+    private List<Taco> tacos;
 
     public Order(){}
 
     public Order(String name, String street, String city, String state, String zip,
-                 String ccNumber, String ccExpiration, String ccCVV) {
+                 String ccNumber, String ccExpiration, String ccCVV, List<Taco> tacos) {
         this.orderName = name;
         this.street = street;
         this.city = city;
@@ -55,6 +56,12 @@ public class Order {
         this.ccNumber = ccNumber;
         this.ccExpiration = ccExpiration;
         this.ccCVV = ccCVV;
+        this.tacos = tacos;
+
+    }
+
+    public void addDesign(Taco design) {
+        this.tacos.add(design);
     }
 
 
