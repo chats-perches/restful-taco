@@ -5,13 +5,16 @@ import los.campesinos.resttaco.data.OrderRepository;
 import los.campesinos.resttaco.data.TacoRepository;
 import los.campesinos.resttaco.data.UserRepository;
 import los.campesinos.resttaco.domain.Order;
+import los.campesinos.resttaco.domain.OrderDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
+import org.springframework.data.domain.jaxb.SpringDataJaxb;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping(path = "/order" , produces="application/json")
@@ -42,10 +45,24 @@ public class OrderController {
 
     @PostMapping(consumes="application/json")
     @ResponseStatus(HttpStatus.CREATED)
-    public Order newOrder(@RequestBody Order newOrder){
-
-        return orderRepo.save(newOrder);
+    public Order newOrder(@RequestBody OrderDTO o){
+        Order order = new Order(o.getOrderName(),o.getStreet(),o.getCity(),
+                o.getState(),o.getZip(),o.getCcNumber(),o.getCcExpiration(),o.getCcCVV());
+        order.setUser(o.getUserFromDB(userRepo));
+        return orderRepo.save(order);
     }
+
+    @PutMapping(path="/{orderId}", consumes="application/json")
+    public Order putOrder(@RequestBody OrderDTO o) {
+        Optional<Order> order = orderRepo.findById(o.getId());
+        if(order.isPresent()) {
+            Order update = order.get();
+            o.updateOrder(update);
+            return orderRepo.save(update);
+        } else
+            return null;
+    }
+
 
     @DeleteMapping("/{orderId}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
