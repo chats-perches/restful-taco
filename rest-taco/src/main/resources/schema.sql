@@ -2,15 +2,14 @@ create table if not exists User(
     id identity,
     username varchar(20) not null,
     password varchar(500) not null,
+    full_name varchar(50),
+    street varchar(30),
+    city varchar(40),
+    state varchar(20),
+    zip varchar(20),
+    phone_number varchar(30),
     roles varchar(30) not null,
     active bit not null
---    fullname varchar(50) not null,
---    street varchar(30) not null,
---    city varchar(40) not null,
---    state varchar(20) not null,
---    zip varchar(20) not null,
---    phone_number varchar(30) not null,
---    roles varchar(20) not null
 );
 
 --create table if not exists Role(

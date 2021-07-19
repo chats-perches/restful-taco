@@ -39,17 +39,17 @@ public class RestTacoApplication {
 		SpringApplication.run(RestTacoApplication.class, args);
 	}
 
-//	@Bean  //TODO: once User class fields have been restored, uncomment this @Bean
-//	public CommandLineRunner dataLoader(UserRepository userRepo) {
-//		// user repo for ease of testing with a built-in user
-//		return new CommandLineRunner() {
-//			@Override
-//			public void run(String... args) throws Exception {
-//
-//				userRepo.save(new User("taco", "password",
-//						"Craig Walls", "123 North Street", "Cross Roads", "TX",
-//						"76227", "123-123-1234"));
-//			}
-//		};
-//	}
+	@Bean
+	public CommandLineRunner dataLoader(UserRepository userRepo) {
+		// user repo for ease of testing with a built-in user
+		return new CommandLineRunner() {
+			@Override
+			public void run(String... args) throws Exception {
+
+				userRepo.save(new User("taco", "password",
+						"Craig Walls", "123 North Street", "Cross Roads", "TX",
+						"76227", "123-123-1234", "USER,ACTUATOR", true));
+			}
+		};
+	}
 }
