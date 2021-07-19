@@ -1,44 +1,41 @@
 package los.campesinos.resttaco.domain;
 
-import lombok.Data;
+import javax.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+
 
 @Entity
-@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Getter
+@Setter
+@ToString
 public class User {
 
-    private static final long serialVersionUID = 1L;
-
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private  String username;
-    private  String password;
-    private  String fullname;
-    private  String street;
-    private  String city;
-    private  String state;
-    private  String zip;
-    private  String phoneNumber;
+    private String username;
+    private String password;
+    //TODO: return the following fields: fullname, street, city, state, zip, & phoneNumber
     private String roles;
+    private Boolean active;
 
-    public User(){ this.roles = "FRENCH_FRIES"; }
 
-    public User(String username, String password, String fullname, String street,
-                String city, String state, String zip, String phoneNumber) {
-        this();
+    public User(String username, String password, String roles, Boolean active) {
         this.username = username;
         this.password = password;
-        this.fullname = fullname;
-        this.street = street;
-        this.city = city;
-        this.state = state;
-        this.zip = zip;
-        this.phoneNumber = phoneNumber;
+        this.roles = roles;
+        this.active = active;
+    }
+
+    public Boolean isActive() {
+        return active;
     }
 }

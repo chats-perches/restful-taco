@@ -2,14 +2,22 @@ create table if not exists User(
     id identity,
     username varchar(20) not null,
     password varchar(500) not null,
-    fullname varchar(50) not null,
-    street varchar(30) not null,
-    city varchar(40) not null,
-    state varchar(20) not null,
-    zip varchar(20) not null,
-    phone_number varchar(30) not null,
-    roles varchar(20) not null
+    roles varchar(30) not null,
+    active bit not null
+--    fullname varchar(50) not null,
+--    street varchar(30) not null,
+--    city varchar(40) not null,
+--    state varchar(20) not null,
+--    zip varchar(20) not null,
+--    phone_number varchar(30) not null,
+--    roles varchar(20) not null
 );
+
+--create table if not exists Role(
+--    id identity,
+--    name varchar(20) not null,
+--    user_id bigint not null
+--);
 
 create table if not exists Ingredient (
   id varchar(4) not null,
@@ -54,6 +62,9 @@ create table if not exists Taco_Order_Tacos (
 
 alter table Taco_Order
     add foreign key (user_id) references User(id);
+
+--alter table Role
+--    add foreign key (user_id) references User(id);
 
 alter table Taco_Order_Tacos
     add foreign key (order_id) references Taco_Order(id);

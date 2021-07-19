@@ -7,6 +7,13 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
 
+/**
+ * THIS CONTROLLER IS FOR TESTING REGISTRATION
+ *    TODO: make a new controller for "/register" for registering users
+ * */
+
+
+
 @RestController
 @RequestMapping(path="/user", produces="application/json")
 @CrossOrigin(origins="*")
