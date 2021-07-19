@@ -9,7 +9,7 @@ import java.util.Optional;
 
 /**
  * THIS CONTROLLER IS FOR TESTING REGISTRATION
- *    TODO: make a new controller for "/register" for registering users
+ *
  * */
 
 
