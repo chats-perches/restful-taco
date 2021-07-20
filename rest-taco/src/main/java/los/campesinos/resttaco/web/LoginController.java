@@ -44,6 +44,7 @@ public class LoginController {
             );
         }
         catch (BadCredentialsException incredible) {
+            System.out.println("eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeep!!!!!!!!!!!!!");
             throw new Exception("Incorrect username or password...\nYou're incredible!", incredible);
         }
         final UserDetails userDetails = userDetailsService
