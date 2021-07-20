@@ -3,6 +3,9 @@ package los.campesinos.resttaco.domain;
 import lombok.Data;
 import los.campesinos.resttaco.data.TacoRepository;
 import los.campesinos.resttaco.data.UserRepository;
+import los.campesinos.resttaco.model.Order;
+import los.campesinos.resttaco.model.Taco;
+import los.campesinos.resttaco.model.User;
 
 import java.util.ArrayList;
 import java.util.List;

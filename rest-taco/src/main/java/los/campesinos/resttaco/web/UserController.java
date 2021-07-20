@@ -1,7 +1,7 @@
 package los.campesinos.resttaco.web;
 
 import los.campesinos.resttaco.data.UserRepository;
-import los.campesinos.resttaco.domain.User;
+import los.campesinos.resttaco.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

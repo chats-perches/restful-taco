@@ -2,7 +2,7 @@ package los.campesinos.resttaco.web;
 
 import los.campesinos.resttaco.data.IngredientRepository;
 import los.campesinos.resttaco.data.TacoRepository;
-import los.campesinos.resttaco.domain.Taco;
+import los.campesinos.resttaco.model.Taco;
 import los.campesinos.resttaco.domain.TacoDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

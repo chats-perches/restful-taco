@@ -1,8 +1,7 @@
 package los.campesinos.resttaco.web;
 
 import los.campesinos.resttaco.data.IngredientRepository;
-import los.campesinos.resttaco.domain.Ingredient;
-import los.campesinos.resttaco.domain.Taco;
+import los.campesinos.resttaco.model.Ingredient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

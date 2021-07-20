@@ -1,4 +1,4 @@
-package los.campesinos.resttaco.domain;
+package los.campesinos.resttaco.model;
 
 import lombok.AccessLevel;
 import lombok.Data;

@@ -1,6 +1,7 @@
 package los.campesinos.resttaco.domain;
 
 import lombok.Data;
+import los.campesinos.resttaco.model.User;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Data

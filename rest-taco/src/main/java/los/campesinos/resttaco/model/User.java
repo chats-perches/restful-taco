@@ -1,4 +1,4 @@
-package los.campesinos.resttaco.domain;
+package los.campesinos.resttaco.model;
 
 import javax.persistence.*;
 import lombok.AllArgsConstructor;

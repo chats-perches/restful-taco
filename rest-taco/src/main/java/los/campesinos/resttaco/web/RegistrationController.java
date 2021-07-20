@@ -2,7 +2,7 @@ package los.campesinos.resttaco.web;
 
 import los.campesinos.resttaco.data.UserRepository;
 import los.campesinos.resttaco.domain.RegistrationForm;
-import los.campesinos.resttaco.domain.User;
+import los.campesinos.resttaco.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;

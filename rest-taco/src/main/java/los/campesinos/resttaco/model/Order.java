@@ -1,6 +1,8 @@
-package los.campesinos.resttaco.domain;
+package los.campesinos.resttaco.model;
 
 import lombok.Data;
+import los.campesinos.resttaco.model.Taco;
+import los.campesinos.resttaco.model.User;
 import org.springframework.data.rest.core.annotation.RestResource;
 
 import javax.persistence.*;
