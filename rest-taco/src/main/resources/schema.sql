@@ -1,6 +1,6 @@
 create table if not exists User(
     id identity,
-    username varchar(20) not null,
+    username varchar(20) not null unique,
     password varchar(500) not null,
     full_name varchar(50),
     street varchar(30),
@@ -10,7 +10,7 @@ create table if not exists User(
     phone_number varchar(30),
     roles varchar(30) not null,
     active bit not null
-);
+    );
 
 --create table if not exists Role(
 --    id identity,
