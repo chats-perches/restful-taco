@@ -4,6 +4,7 @@ import los.campesinos.resttaco.util.JwtRequestFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -12,6 +13,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.HttpStatusEntryPoint;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 @Configuration
@@ -38,17 +40,25 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     public void configure(HttpSecurity http) throws Exception {
         http
                 .csrf().disable()
-                .authorizeRequests()
-                .antMatchers("/oauth/token", "/authenticate", "/register").permitAll()
-                .anyRequest().authenticated()
+                .authorizeRequests( r -> r
+                    .antMatchers("/", "/login/oauth2/code/github",
+                            "/authenticate", "/register").permitAll()
+                    .anyRequest().authenticated()
+                ).exceptionHandling(e -> e
+                    .authenticationEntryPoint(
+                            new HttpStatusEntryPoint(HttpStatus.UNAUTHORIZED))
+                    )
+                .oauth2Login()
                 .and()
                 .sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-//                .and()
-//                .httpBasic()
-//                .and()
-                ;
-        http.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
+                .and()
+                .httpBasic();
+
+        http.
+                logout(l -> l.logoutSuccessUrl("/").permitAll());
+        http.
+                addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
     }
 
 
