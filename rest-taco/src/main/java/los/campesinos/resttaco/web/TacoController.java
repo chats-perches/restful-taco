@@ -11,21 +11,17 @@ import org.springframework.web.bind.annotation.*;
 
 
 @RestController
-@RequestMapping(path = "/tacos", produces="application/json")
+@RequestMapping(path = "/design", produces="application/json")
 @CrossOrigin(origins="*")
 public class TacoController {
     private final IngredientRepository ingredientRepository;
     private final TacoRepository tacoRepository;
-    
-
 
     @Autowired
     public TacoController(IngredientRepository ingredientRepository, TacoRepository tacoRepository){
         this.ingredientRepository = ingredientRepository;
         this.tacoRepository = tacoRepository;
     }
-
-
 
     @GetMapping(path="/{id}", produces="application/json")
     Taco one(@PathVariable Long id){

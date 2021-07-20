@@ -7,8 +7,7 @@ import java.util.List;
 
 @Data
 public class TacoDTO{
-
     String name;
-    List<String> ingredients = new ArrayList<String>();
+    List<String> ingredients = new ArrayList<>();
 
 }

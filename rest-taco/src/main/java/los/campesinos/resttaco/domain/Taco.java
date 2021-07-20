@@ -2,6 +2,7 @@ package los.campesinos.resttaco.domain;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 import org.springframework.data.rest.core.annotation.RestResource;
 
 import javax.persistence.*;
@@ -11,7 +12,7 @@ import java.util.List;
 
 @Data
 @Entity
-@RestResource(rel="tacos", path="tacos")
+
 public class Taco {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
