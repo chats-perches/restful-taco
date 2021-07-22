@@ -5,9 +5,12 @@ import java.io.IOException;
 import javax.servlet.*;
 import javax.servlet.http.*;
 
+/**
+ * demented work around for the illegal ';' in the JSESSIONID redirect URL
+ * TODO: scrap this and the web.xml, if possible
+ * */
+
 public class DisableUrlSessionFilter implements Filter {
-
-
 
     public void doFilter(
             ServletRequest request,

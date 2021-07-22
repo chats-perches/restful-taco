@@ -8,8 +8,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+/**
+ * MVC CONTROLLER TO DEMO OAUTH IN THE BROWSER
+* */
+
+
 @Controller
-public class OAuth2Controller {
+public class MvcOAuth2Controller {
 
     @RequestMapping("/securedPage")
     public String securedPage(Model model,
@@ -18,7 +23,7 @@ public class OAuth2Controller {
         model.addAttribute("userName", oauth2User.getName());
         model.addAttribute("clientName", authorizedClient.getClientRegistration().getClientName());
         model.addAttribute("userAttributes", oauth2User.getAttributes());
-        return "securedPage";
+        return "oauth";
     }
 
 }
