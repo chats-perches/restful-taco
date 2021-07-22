@@ -1,0 +1,13 @@
+<filter>
+    <filter-name>
+        DisableUrlSessionFilter
+    </filter-name>
+    <filter-class>
+        los.campesinos.resttaco.util.DisableUrlSessionFilter
+    </filter-class>
+    <filter-mapping>
+        <filter-name>DisableUrlSessionFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+</filter>
+
